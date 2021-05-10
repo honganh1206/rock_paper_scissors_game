@@ -18,7 +18,7 @@ def main():
         print('Your move is:', human_move)
         print('AI move is:', ai_move)
 
-        # announce the winner
+        # announce the winner of each row
 
         if ai_move != human_move:
             print('The winner is', get_winner(ai_move, human_move))
@@ -28,15 +28,19 @@ def main():
             if winner == 'human':
                 human_win += 1
                 row += 1
-                if human_win == 3:
+                print('The score is now ', str(human_win), '-', str(ai_win))
+                if human_win > ai_win and row == 3:
                     print('')
                     print('Congratulation! You beat the AI')
-            if winner == 'ai':
+                    break
+            if winner == 'AI':
                 ai_win += 1
                 row += 1
-                if ai_win == 3:
+                print('The score is now ', str(human_win), '-', str(ai_win))
+                if ai_win > human_win and row == 3:
+                    print('')
                     print('The AI beat you. Try better next time.')
-
+                    break
         # if tie then reset row
 
         else:
@@ -45,10 +49,10 @@ def main():
 
 
 def print_welcome():
-    print("Wel come to the RPS game! Here's how it works")
-    print('Rock beats Scissors/Scissors beats Paper/Paper beats Rock, and the one who gets 3 wins wins the game')
+    print("Welcome to the RPS game! Here's how it works")
+    print('Rock beats Scissors/Scissors beats Paper/Paper beats Rock, and the one who gets wins more row wins the game')
     print('Remember to type "Rock/Paper/Scissors" and nothing else')
-    print("Now let's play some games vs an AI: ")
+    print("Now let's play 3 rows vs an AI: ")
 
 
 def get_ai_move():
